@@ -2,6 +2,8 @@
 
 > VueJs and Firebaes Job Portal
 
+# Still Under Development! Please fork to send pull request.
+
 ## Build Setup
 
 ``` bash
