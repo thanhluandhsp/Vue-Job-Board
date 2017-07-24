@@ -7,28 +7,7 @@
           <div class="md-title">{{ job.jobtitle }}</div>
           <div class="md-subhead">in {{ job.company }}</div>
         </md-card-header-text>
-        <md-menu md-size="4" md-direction="bottom left">
-          <md-button class="md-icon-button" md-menu-trigger>ƒ
-            <md-icon>more_vert</md-icon>
-          </md-button>
-  
-          <md-menu-content>
-            <md-menu-item>
-              <span>{{job.formattedLocation}}</span>
-              <md-icon>map</md-icon>
-            </md-menu-item>
-  
-            <md-menu-item>
-              <span>Send a message</span>
-              <md-icon>message</md-icon>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
       </md-card-header>
-  
-      <md-card-content>
-        {{ job.snippet }}
-      </md-card-content>
   
     </md-card-area>
     <md-card-actions>

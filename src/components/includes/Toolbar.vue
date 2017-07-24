@@ -34,7 +34,7 @@
         </md-menu-content>
       </md-menu>
   
-      <md-button class="md-raised md-warn" @click="openDialog('login')" v-if="!user">Login</md-button>
+      <md-button class="md-raised md-warn" @click="openDialog('login')" v-if="!user" id="login-button">Login</md-button>
     </md-toolbar>
   
     <md-dialog md-open-from="#login" md-close-to="#login" ref="login">
@@ -167,6 +167,7 @@ export default {
       }).catch(err => console.log(error))
     },
     openDialog(ref) {
+      console.log(this.$refs);
       this.$refs[ref].open();
     },
     closeDialog(ref) {

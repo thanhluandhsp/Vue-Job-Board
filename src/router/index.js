@@ -13,19 +13,12 @@ import { firebaseApp } from '@/firebase'
 Vue.use(Router)
 
 function checkAuth(to, from, next) {
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            next()
-        } else {
-            next('/login')
-        }
-    });
-
-    // if (to.meta.reqAuth && !firebase.auth().currentUser) {
-    //     next('/login')
-    // } else {
-    //     next()
-    // }
+    console.log(store);
+    if (store.state.userLogedIn) {
+        next()
+    } else {
+        document.getElementById('login-button').click();
+    }
 }
 
 export default new Router({

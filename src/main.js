@@ -27,7 +27,7 @@ Vue.use(VueResource);
 Vue.use(VeeValidate);
 
 /* eslint-disable no-new */
-new Vue({
+global.v = new Vue({
     el: '#app',
     router,
     store,

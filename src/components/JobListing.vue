@@ -23,15 +23,19 @@ export default {
   data: function () {
     return {
       loading: true,
-      jobs: []
     }
   },
-  created: function () {
-    this.getIndeedJobs();
+  computed: function () {
+    return {
+      ... mapMutations(() => {[
+        'GET_INDEED_JOBS',
+      ]}),
+      jobs: this.$store.jobs
+    }
   },
   methods: {
     getIndeedJobs() {
-      this.$http.get('http://localhost/barodajobs/getjobs.php').then(response => {
+      this.$http.get(this.$store.state.indeedURLBase).then(response => {
         this.loading = false;
 
         this.jobs = response.data.results;
