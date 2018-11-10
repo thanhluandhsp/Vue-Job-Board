@@ -1,12 +1,17 @@
-# vuejs_firebase_job_portal
+# Vue-Job-Board
 
-> VueJs and Firebaes Job Portal
+> Job Portal built with VueJs and Firebase
 
-# Still Under Development! Please fork to send pull request.
+## Still Under Development!
+
+Please fork to send pull requests if you want to contribute to development.
 
 ## Build Setup
 
 ``` bash
+# clone the repository
+git clone https://github.com/tamal3053/Vue-Job-Board && cd Vue-Job-Board
+
 # install dependencies
 npm install
 
@@ -20,4 +25,4 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
