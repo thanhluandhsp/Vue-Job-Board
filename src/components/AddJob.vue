@@ -75,6 +75,7 @@ export default {
       this.$validator.validateAll().then(results => {
         if (results) {
           alert('Form Submitted!');
+          
           console.log(results);
           console.log(formData);
         }
