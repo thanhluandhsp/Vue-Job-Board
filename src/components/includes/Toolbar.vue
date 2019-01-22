@@ -34,44 +34,11 @@
         </md-menu-content>
       </md-menu>
   
-      <md-button class="md-raised md-warn" @click="openDialog('login')" v-if="!user" id="login-button">Login</md-button>
+       <md-button v-if="!user" @click="signInWithGoogle" class="md-button md-raised md-primary">
+            <md-icon>account_circle</md-icon> Sign in with Google</md-button>
     </md-toolbar>
   
-    <md-dialog md-open-from="#login" md-close-to="#login" ref="login">
-  
-      <md-progress md-indeterminate v-if="loading"></md-progress>
-  
-      <md-dialog-title>Login or Register</md-dialog-title>
-  
-      <md-dialog-content>
-        <template v-if="!user && !loading">
-          <md-button @click="signInWithGoogle" class="md-button md-raised md-primary">
-            <md-icon>account_circle</md-icon> Sign in with Google</md-button>
-        </template>
-      </md-dialog-content>
-  
-      <md-dialog-content>
-        <form>
-          <md-input-container :class="{'md-input-invalid': errors.has('email')}">
-            <label for="email">Email</label>
-  
-            <md-input v-model="credentials.email" data-vv-name="email" type="email" v-validate name="email" data-vv-rules="required|email"></md-input>
-            <span class="md-error">{{errors.first('email')}}</span>
-          </md-input-container>
-  
-          <md-input-container :class="{'md-input-invalid': errors.has('password')}">
-            <label for="password">Password</label>
-  
-            <md-input v-model="credentials.password" data-vv-name="password" type="password" v-validate name="password" data-vv-rules="required|min:5"></md-input>
-            <span class="md-error">{{errors.first('password')}}</span>
-          </md-input-container>
-  
-          <md-button class="md-button md-raised md-warn">Login</md-button>
-          <md-button class="md-button md-raised md-primary">Register</md-button>
-        </form>
-      </md-dialog-content>
-  
-    </md-dialog>
+    
   
   </div>
 </template>
