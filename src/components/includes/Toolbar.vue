@@ -34,7 +34,7 @@
         </md-menu-content>
       </md-menu>
   
-       <md-button v-if="!user" @click="signInWithGoogle" class="md-button md-raised md-primary">
+       <md-button v-if="!user" id="login-button" @click="signInWithGoogle" class="md-button md-raised md-primary">
             <md-icon>account_circle</md-icon> Sign in with Google</md-button>
     </md-toolbar>
   
@@ -115,7 +115,7 @@ export default {
       firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
 
-        debugger;
+
         var token = result.credential.accessToken;
         // The signed-in user info.
         that.user = result.user;

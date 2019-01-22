@@ -13,8 +13,9 @@ import { firebaseApp } from '@/firebase'
 Vue.use(Router)
 
 function checkAuth(to, from, next) {
-    console.log(store);
-    if (store.state.userLogedIn) {
+    //console.log(store);
+    //debugger;
+    if (firebaseApp.auth().currentUser) {
         next()
     } else {
         document.getElementById('login-button').click();
@@ -22,6 +23,7 @@ function checkAuth(to, from, next) {
 }
 
 export default new Router({
+    mode: 'history',
     routes: [{
             path: '/',
             name: 'JobListing',

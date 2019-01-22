@@ -74,7 +74,7 @@ export default {
     addJobPost(formData) {
       this.$validator.validateAll().then(results => {
         if (results) {
-          alert('From Submitted!');
+          alert('Form Submitted!');
           console.log(results);
           console.log(formData);
         }
