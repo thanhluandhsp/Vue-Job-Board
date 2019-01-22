@@ -88,9 +88,12 @@ export default {
 
     firebaseApp.auth().onAuthStateChanged((user) => {
 
+      
+
       if (user) {
 
         this.user = user;
+        //debugger;
 
         let userRef = db.ref("users");
 
@@ -138,12 +141,30 @@ export default {
       this.$router.push('/');
     },
     signInWithGoogle: function () {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebaseApp.auth().signInWithRedirect(provider).then((result) => {
 
-        this.user = result.user
+      var provider = new firebase.auth.GoogleAuthProvider();
+      var that = this; 
 
-      }).catch(err => console.log(error))
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+
+        debugger;
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        that.user = result.user;
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        
+        var credential = error.credential;
+        // ...
+        console.error(error);
+      });
     },
     signUpWithPassword() {
       if (this.password === this.confirmPassword) {

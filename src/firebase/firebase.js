@@ -6,6 +6,8 @@ const mutation = {
             const provider = new firebase.auth.GoogleAuthProvider()
             firebaseApp.auth().signInWithRedirect(provider).then((result) => {
 
+                
+
                 this.user = result.user
 
             }).catch(err => console.log(error))
