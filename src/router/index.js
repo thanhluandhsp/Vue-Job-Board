@@ -13,12 +13,12 @@ import { firebaseApp } from '@/firebase'
 Vue.use(Router)
 
 function checkAuth(to, from, next) {
-    //console.log(store);
-    //debugger;
+    
     if (firebaseApp.auth().currentUser) {
         next()
     } else {
-        document.getElementById('login-button').click();
+       // alert('Please login to use this feature');
+        
     }
 }
 
@@ -30,7 +30,7 @@ export default new Router({
             component: JobListing
         },
         {
-            path: '/job-detail/:jobkey',
+            path: '/job/:key',
             name: 'job-detail',
             props: true,
             component: JobDetail,

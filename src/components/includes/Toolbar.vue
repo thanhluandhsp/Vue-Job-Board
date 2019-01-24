@@ -2,11 +2,12 @@
   <div id="toolbar">
   
     <md-toolbar md-theme="default">
-      <md-button class="md-icon-button">
-        <md-icon>menu</md-icon>
-      </md-button>
+      
+        
+      <img  src="../../assets/lambda-logo.svg" alt="logo" style="width:25px; margin:5px;">
+      
   
-      <h2 class="md-title" style="flex: 1" @click="goToHome">Jobs Portal</h2>
+      <h2 class="md-title" style="flex: 1" @click="goToHome">Fresher Jobs</h2>
   
       <router-link tag="md-button" to="/add-job" class="md-rised">
         <md-icon>add</md-icon>
@@ -15,12 +16,12 @@
         </span>
       </router-link>
   
-      <router-link tag="md-button" to="/profile" class="md-raised" v-if="user">
+      <!-- <router-link tag="md-button" to="/profile" class="md-raised" v-if="user"> -->
         <md-avatar style="width:28px;min-width:28px;height:28px;min-height:28px;">
-          <img :src="user.photoURL" alt="avatar">
+          <img v-if="user" :src="user.photoURL" alt="avatar">
         </md-avatar>
-        <span>{{ user.displayName }}</span>
-      </router-link>
+        <!-- <span>{{ user.displayName }}</span> -->
+      <!-- </router-link> -->
   
       <md-menu md-size="4" md-direction="bottom left" v-if="user">
         <md-button class="md-icon-button" md-menu-trigger>
@@ -70,7 +71,7 @@ export default {
           if (!snapshot.hasChild(userSelf.uid)) {
             userRef.child(userSelf.uid).set({
               id: userSelf.uid,
-              pictureUrl: userSelf.photoURL,
+             pictureUrl: userSelf.photoURL,
               displayName: userSelf.displayName,
               email: userSelf.email,
               disabled: false,

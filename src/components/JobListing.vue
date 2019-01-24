@@ -1,9 +1,8 @@
 <template>
   <div>
-    <md-spinner md-indeterminate class="md-accent" v-if="loading"></md-spinner>
   
-    <div v-if="!loading">
-      <md-subheader>Latest Job Posts</md-subheader>
+    <div>
+      <md-subheader>Công việc mới nhất</md-subheader>
       <md-layout>
         <md-layout md-flex="33" v-for="job in jobs" :key="job.jobkey">
           <app-jobcard :job="job"></app-jobcard>
@@ -15,6 +14,12 @@
 
 <script>
 import JobCard from './includes/JobCard.vue'
+
+
+import { firebaseApp } from '@/firebase'
+import store from '../store'
+const db = firebaseApp.database();
+
 export default {
   name: 'JosbListings',
   components: {
@@ -23,26 +28,37 @@ export default {
   data: function () {
     return {
       loading: true,
+      jobs: []
     }
   },
-  computed: function () {
-    return {
-      ... mapMutations(() => {[
-        'GET_INDEED_JOBS',
-      ]}),
-      jobs: this.$store.jobs
-    }
+  created() {
+    this.getJobs();
   },
   methods: {
-    getIndeedJobs() {
-      this.$http.get(this.$store.state.indeedURLBase).then(response => {
-        this.loading = false;
+    getJobs() {
+      var that = this;
 
-        this.jobs = response.data.results;
+        
+      db.ref('/jobs/')
+        .on('value',function(snapshot) {
 
-      }, response => {
+        
+          
 
+          var items = [];
+          snapshot.forEach((child) => {
+            items.push({
+              key: child.key,
+              ...child.val()
+            });
+          });
+
+          that.jobs = items;
+
+        
       });
+
+    
     }
   }
 }

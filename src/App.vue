@@ -4,18 +4,16 @@
     <Toolbar></Toolbar>
 
     <md-whiteframe style="background:white">
-      <md-input-container>
+      <!-- <md-input-container>
         <md-button class="md-icon-button">
           <md-icon>search</md-icon>
         </md-button>
         <md-input placeholder="Search for Jobs"></md-input>
-      </md-input-container>
+      </md-input-container> -->
     </md-whiteframe>
   
     <md-layout md-gutter>
-      <md-layout md-flex="25">
-        <SidebarJobs></SidebarJobs>
-      </md-layout>
+     
       <md-layout md-flex="75">
         <router-view></router-view>
       </md-layout>
@@ -26,10 +24,9 @@
 
 <script>
 import Toolbar from '@/components/includes/Toolbar.vue';
-import SidebarJobs from '@/components/includes/SidebarJobs.vue';
 export default {
   name: 'app',
-  components: { Toolbar, SidebarJobs },
+  components: { Toolbar },
 }
 </script>
 

@@ -7,6 +7,19 @@ import VueResource from 'vue-resource'
 import VueMaterial from 'vue-material'
 import VeeValidate from 'vee-validate'
 import store from './store'
+import firebase from 'firebase'
+
+firebase.auth().onAuthStateChanged(function (user) {
+    
+    if (user) {
+        store.state.userLogedIn = true
+        store.state.thisUser = user
+
+    } else {
+        store.state.userLogedIn = false
+        store.state.thisUser = null
+    }
+});
 
 /**
  * Vue Material configurations
@@ -14,7 +27,7 @@ import store from './store'
 import 'vue-material/dist/vue-material.css';
 Vue.use(VueMaterial);
 Vue.material.registerTheme('default', {
-    primary: 'purple',
+    primary: 'teal',
     accent: 'amber',
     warn: 'red',
     background: 'white'

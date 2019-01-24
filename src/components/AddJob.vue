@@ -40,6 +40,7 @@
 
 <script>
 import { firebaseApp } from '@/firebase'
+import store from '../store'
 const db = firebaseApp.database();
 
 export default {
@@ -50,7 +51,7 @@ export default {
       form: {
         jobtitle: '',
         compamy: '',
-        formattedLocation: 'Vadodara, Gujarat',
+        location: 'Vadodara, Gujarat',
         snippet: '',
         email: '',
         name: '',
@@ -74,14 +75,21 @@ export default {
     addJobPost(formData) {
       this.$validator.validateAll().then(results => {
         if (results) {
+
+
+          // Get a key for a new Post.
+          var newJobKey = db.ref().child('jobs').push().key;
+          var updates = {};
+          //debugger;
+          this.form.user_id = store.state.thisUser.uid;
+          updates['/jobs/' + newJobKey]= this.form;
           alert('Form Submitted!');
           
-          console.log(results);
-          console.log(formData);
+          db.ref().update(updates);
         }
-      }).catch(() => {
+      }).catch((error) => {
         // eslint-disable-next-line
-        alert('Correct them errors!');
+        alert(error);
       });
     }
   },
