@@ -31,7 +31,7 @@ export default new Router({
             component: JobListing
         },
         {
-            path: '/job/:key',
+            path: '/job/:_key',
             name: 'job-detail',
             props: true,
             component: JobDetail,

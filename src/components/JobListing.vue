@@ -6,7 +6,7 @@
     <div>
       <md-subheader>Công việc mới nhất</md-subheader>
       <md-layout>
-        <md-layout class="flex-fill" v-for="job in jobs" :key="job.jobkey">
+        <md-layout class="flex-fill" v-for="job in jobs" :_key="job.key">
           <app-jobcard :job="job"></app-jobcard>
         </md-layout>
       </md-layout>

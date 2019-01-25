@@ -13,7 +13,7 @@
     </md-card-area>
     <md-card-actions>
       {{job.formattedRelativeTime}} &nbsp;
-      <router-link tag="md-button" :to="{ name: 'job-detail', params: { key: job.key }}">View Job</router-link>
+      <router-link tag="md-button" :to="{ name: 'job-detail', params: { _key: job.key }}">View Job</router-link>
     </md-card-actions>
   </md-card>
 </template>

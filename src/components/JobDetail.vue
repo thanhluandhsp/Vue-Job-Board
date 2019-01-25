@@ -63,12 +63,35 @@
 
             </div>
 
+            <div class="md-body-2" v-if="thisUser">
+              <h3>Contact</h3>
+                <ul>
+                  <li v-if="job.website">
+                    Website: <a :href="job.website">{{ job.website }}</a>
+                  </li>
+                  <li v-if="job.phone">
+                    Phone: {{ job.phone}}
+                  </li>
+                  <li v-if="job.email">
+                    Email: {{ job.email}}
+                  </li>
+                  <li v-if="job.skype">
+                    Skype: {{ job.skype}}
+                  </li>
+                  <li v-if="job.how">
+                    How to apply: {{ job.how}}
+                  </li>
+                </ul>
+                
+
+            </div>
+
 
 
 
             <br>
 
-            <md-button class="md-button md-accent md-raised" target="_blank" :href="job.url">Apply Now</md-button>
+            <md-button class="md-button md-accent md-raised" @click="signInWithGoogle"  v-if="!thisUser">Apply Now</md-button>
 
           </div>
       
@@ -84,14 +107,15 @@ const db = firebaseApp.database();
 import { BulletListLoader } from 'vue-content-loader'
 import TimeAgo from 'vue2-timeago'
 import VueMarkdown from 'vue-markdown'
+import store from '../store'
 
-
+import firebase from 'firebase'
 
 
 
 export default {
   name: 'JobDetail',
-  props: ['key'],
+  props: ['_key'],
   components: {
     BulletListLoader,
     TimeAgo,
@@ -103,20 +127,36 @@ export default {
   data: function () {
     return {
       loading: true,
-      job: null
+      job: null,
+      thisUser: null
     }
   },
  
   mounted() {
     
     this.getJob();
+    var that = this;
+
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+    
+      if (user) {
+           that.thisUser =  user;
+
+      } else {
+          store.state.userLogedIn = false
+          store.state.thisUser = null
+      }
+    });
+    
+   
   },
   methods: {
     getJob() {
       var that = this;
       
         
-      db.ref('/jobs/' +  this.key)
+      db.ref('/jobs/' +  this._key)
 
         .on('value',function(snapshot) {
           
@@ -126,7 +166,33 @@ export default {
       });
 
     
-    }
+    },
+    signInWithGoogle: function () {
+
+      var provider = new firebase.auth.GoogleAuthProvider();
+      var that = this; 
+
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+
+
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        that.thisUser = result.user;
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        
+        var credential = error.credential;
+        // ...
+        console.error(error);
+      });
+    },
   }
 
 }
