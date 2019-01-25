@@ -9,7 +9,7 @@
           <div class="md-subhead">in {{ job.company }}</div>
         </md-card-header-text>
       </md-card-header>
-  {{job}}
+  
     </md-card-area>
     <md-card-actions>
       {{job.formattedRelativeTime}} &nbsp;

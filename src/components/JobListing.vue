@@ -41,10 +41,6 @@ export default {
         
       db.ref('/jobs/')
         .on('value',function(snapshot) {
-
-        
-          
-
           var items = [];
           snapshot.forEach((child) => {
             items.push({

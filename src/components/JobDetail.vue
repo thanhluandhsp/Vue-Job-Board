@@ -46,7 +46,7 @@
 <script>
 export default {
   name: 'JobDetail',
-  props: ['jobkey'],
+  props: ['key'],
 
   data: function () {
     return {
@@ -54,17 +54,24 @@ export default {
       job: null
     }
   },
-  created: function () {
-    this.getIndeedJobsDetails();
+    created() {
+    this.getJob();
   },
   methods: {
-    getIndeedJobsDetails() {
-      this.$http.get('http://localhost/barodajobs/getjobs.php?jobkeys=' + this.$props.jobkey).then(response => {
-        this.job = response.data.results[0];
-        this.loading = false;
-      }, response => {
+    getJob() {
+      var that = this;
 
+      debugger;
+        
+      db.ref('/jobs/' +  this.data.key)
+
+        .on('value',function(snapshot) {
+
+          that.jobs = snapshot.val();
+        
       });
+
+    
     }
   }
 
