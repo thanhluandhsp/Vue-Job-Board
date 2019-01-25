@@ -1,10 +1,12 @@
 <template>
   <div>
+
+
   
     <div>
       <md-subheader>Công việc mới nhất</md-subheader>
       <md-layout>
-        <md-layout md-flex="33" v-for="job in jobs" :key="job.jobkey">
+        <md-layout class="flex-fill" v-for="job in jobs" :key="job.jobkey">
           <app-jobcard :job="job"></app-jobcard>
         </md-layout>
       </md-layout>

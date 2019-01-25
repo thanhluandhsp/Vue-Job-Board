@@ -14,7 +14,7 @@
   
     <md-layout md-gutter>
      
-      <md-layout md-flex="75">
+      <md-layout>
         <router-view></router-view>
       </md-layout>
     </md-layout>
@@ -35,7 +35,7 @@ body {
   background: #fcfcfc
 }
 #app {
-  max-width: 1120px;
+  
   margin: 0 auto;
 }
 
