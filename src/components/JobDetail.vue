@@ -1,6 +1,8 @@
 <template>
   <div id="job-detail">
-    <md-spinner md-indeterminate v-if="loading"></md-spinner>
+
+      <bullet-list-loader v-if="loading"></bullet-list-loader>
+
   
     <span v-if="job">
 
@@ -44,9 +46,18 @@
 </template>
 
 <script>
+import { firebaseApp } from '@/firebase'
+const db = firebaseApp.database();
+import { BulletListLoader } from 'vue-content-loader'
+
+
+
 export default {
   name: 'JobDetail',
   props: ['key'],
+  components: {
+    BulletListLoader
+  },
 
   data: function () {
     return {
@@ -54,20 +65,22 @@ export default {
       job: null
     }
   },
-    created() {
+ 
+  mounted() {
+    
     this.getJob();
   },
   methods: {
     getJob() {
       var that = this;
-
-      debugger;
+      
         
-      db.ref('/jobs/' +  this.data.key)
+      db.ref('/jobs/' +  this.key)
 
         .on('value',function(snapshot) {
-
-          that.jobs = snapshot.val();
+          
+          that.job = snapshot.val();
+          that.loading = false;
         
       });
 

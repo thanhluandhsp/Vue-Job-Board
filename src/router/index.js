@@ -37,7 +37,7 @@ export default new Router({
             meta: {
                 requiresAuth: true
             },
-            beforeEnter: checkAuth
+          //  beforeEnter: checkAuth
         },
         {
             path: '/profile',
