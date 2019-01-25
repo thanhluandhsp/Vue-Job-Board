@@ -15,25 +15,63 @@
       
     <form @submit.prevent="addJobPost(form)">
       <md-input-container :class="{'md-input-invalid': errors.has('jobtitle')}">
-        <label for="jobtitle">Job Title</label>
+        <label for="jobtitle">Job Title *</label>
         <md-input v-model="form.jobtitle" data-vv-name="jobtitle" type="text" v-validate name="jobtitle" data-vv-rules="required|min:10"></md-input>
         <span class="md-error">{{errors.first('jobtitle')}}</span>
       </md-input-container>
   
       <md-input-container :class="{'md-input-invalid': errors.has('company')}">
-        <label for="company">Company</label>
+        <label for="company">Company *</label>
         <md-input v-model="form.company" data-vv-name="company" type="text" v-validate name="company" data-vv-rules="required|min:5"></md-input>
         <span class="md-error">{{errors.first('company')}}</span>
       </md-input-container>
+
   
-      <md-input-container :class="{'md-input-invalid': errors.has('formattedLocation')}">
-        <label for="formattedLocation">City</label>
-        <md-input v-model="form.formattedLocation" data-vv-name="formattedLocation" type="text" v-validate name="formattedLocation" data-vv-rules="required"></md-input>
-        <span class="md-error">{{errors.first('formattedLocation')}}</span>
+      <md-input-container :class="{'md-input-invalid': errors.has('location')}">
+        <label for="location">City *</label>
+        <md-input v-model="form.location" data-vv-name="location" type="text" v-validate name="location" data-vv-rules="required"></md-input>
+        <span class="md-error">{{errors.first('location')}}</span>
+      </md-input-container>
+
+      
+      <md-input-container >
+        <label for="website">Website</label>
+        <md-input v-model="form.company" data-vv-name="website" type="text" v-validate name="website" ></md-input>
+        <span class="md-error">{{errors.first('website')}}</span>
+      </md-input-container>
+
+      
+      <md-input-container :class="{'md-input-invalid': errors.has('email')}">
+        <label for="email">Email *</label>
+        <md-input v-model="form.company" data-vv-name="email" type="text" v-validate name="email"></md-input>
+        <span class="md-error">{{errors.first('email')}}</span>
+      </md-input-container>
+      
+      
+      
+      <md-input-container>
+        <label for="phone">Contact Phone</label>
+        <md-input v-model="form.phone" data-vv-name="phone" type="text" v-validate name="phone" ></md-input>
+        <span class="md-error">{{errors.first('phone')}}</span>
+      </md-input-container>
+      
+      
+      
+      <md-input-container >
+        <label for="phone">Skype</label>
+        <md-input v-model="form.skype" data-vv-name="skype" type="text" v-validate name="skype" ></md-input>
+        <span class="md-error">{{errors.first('skype')}}</span>
+      </md-input-container>
+
+      
+      <md-input-container >
+        <label for="email">How to apply</label>
+        <md-input v-model="form.company" data-vv-name="how" type="text" name="how" ></md-input>
+        <span class="md-error">{{errors.first('how')}}</span>
       </md-input-container>
   
       <md-input-container :class="{'md-input-invalid': errors.has('description')}">
-        <label for="snippet">Job Description</label>
+        <label for="snippet">Job Description *</label>
         <md-textarea v-model="form.description" data-vv-name="snippet" type="text" v-validate name="snippet" data-vv-rules="required|min:25" style="min-height:130px"></md-textarea>
         <span class="md-error">Please add some description of minimum 25 characters.</span>
       </md-input-container>
@@ -62,7 +100,7 @@
 
       
       <md-input-container >
-        <label for="snippet">Skills and Experience</label>
+        <label for="snippet">Skills and Experience  *</label>
         <md-textarea v-model="form.skills" data-vv-name="snippet" type="text" v-validate name="snippet" data-vv-rules="required|min:25" style="min-height:130px"></md-textarea>
         <span class="md-error"></span>
       </md-input-container>
@@ -100,7 +138,9 @@ export default {
         responsibilities: '',
         skills: '',
         email: '',
-        name: '',
+        phone: '',
+        website: '',
+        how: '',
         disabled: false,
         created_at: new Date(),
        

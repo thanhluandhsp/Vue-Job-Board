@@ -1,23 +1,18 @@
 <template>
   <md-layout>
 
-     <md-subheader>
-        <md-button @click="$router.go(-1)" class="md-icon-button md-raised md-accent">
-          <md-icon>keyboard_backspace</md-icon>
-        </md-button>
-        <md-icon style="padding: 0px;margin:0 0 0 15px;">place</md-icon> {{ job.formattedLocation }}
-      </md-subheader>
 
-    <md-card md-with-hover class="card-job"  v-if="job">
+    <md-card md-with-hover  v-if="job">
     
   
       <md-card-header>
-        
-          <h2 >{{ job.jobtitle }}</h2>
+     
+          
+            <h2 >{{ job.jobtitle }}</h2>
       </md-card-header>
       
 
-       <md-card-content>
+      <md-card-content>
 
           <div class="md-body-2" style="">
             
@@ -26,7 +21,9 @@
             <div class="md-body-1">
               <span style="margin-right: 10px">
               Posted <md-icon>access_time</md-icon>
-              {{ job.created }} 
+              
+              <time-ago  :datetime="job.created_at" long></time-ago>  <md-icon style="padding: 0px;margin:0 0 0 15px;">place</md-icon> {{ job.location }}
+
               </span>
               
             </div>
@@ -34,31 +31,36 @@
 
             <div class="md-body-2">
               <h3>Job Description</h3>
-              {{ job.description }}
+                <vue-markdown>  &nbsp;
+              {{ job.description }}</vue-markdown>
             </div>
 
             
             <div class="md-body-2" v-if="job.why">
               <h3>Why join us</h3>
-              {{ job.why }}
+                <vue-markdown>  &nbsp;
+              {{ job.why }}</vue-markdown>
             </div>
 
             
             <div class="md-body-2" v-if="job.benefits">
-              <h3>Benefits</h3>
-              {{ job.benefits }}
+              <h3>Benefits</h3>  <vue-markdown>  &nbsp;
+              {{ job.benefits }}</vue-markdown>
             </div>
 
               
             <div class="md-body-2" v-if="job.responsibilities">
               <h3>Responsibilities</h3>
-              {{ job.responsibilities }}
+               <vue-markdown>  &nbsp;
+              {{ job.responsibilities }}</vue-markdown>
             </div>
 
               
             <div class="md-body-2" v-if="job.skills">
               <h3>Your Skills and Experience</h3>
-              {{ job.skills }}
+                <vue-markdown> &nbsp; {{ job.skills }}
+                </vue-markdown>
+
             </div>
 
 
@@ -80,6 +82,10 @@
 import { firebaseApp } from '@/firebase'
 const db = firebaseApp.database();
 import { BulletListLoader } from 'vue-content-loader'
+import TimeAgo from 'vue2-timeago'
+import VueMarkdown from 'vue-markdown'
+
+
 
 
 
@@ -87,7 +93,11 @@ export default {
   name: 'JobDetail',
   props: ['key'],
   components: {
-    BulletListLoader
+    BulletListLoader,
+    TimeAgo,
+    VueMarkdown
+
+
   },
 
   data: function () {
