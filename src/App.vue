@@ -42,4 +42,7 @@ body {
 h2.md-title {
   cursor: pointer
 }
+h1, h2, h3 {
+  color: teal;
+}
 </style>

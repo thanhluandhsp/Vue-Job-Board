@@ -9,15 +9,16 @@ import AddJob from '@/components/AddJob'
 
 import firebase from 'firebase'
 import { firebaseApp } from '@/firebase'
+import store from '../store'
 
 Vue.use(Router)
 
 function checkAuth(to, from, next) {
     
-    if (firebaseApp.auth().currentUser) {
+    if (store.state.thisUser) {
         next()
     } else {
-       // alert('Please login to use this feature');
+       alert('Please login to use this feature');
         
     }
 }

@@ -7,7 +7,7 @@
       <img  src="../../assets/lambda-logo.svg" alt="logo" style="width:25px; margin:5px;">
       
   
-      <h2 class="md-title" style="flex: 1" @click="goToHome">Fresher Jobs</h2>
+      <h2 class="md-title" style="flex: 1; color: white" @click="goToHome">Fresher Jobs</h2>
   
       <router-link tag="md-button" to="/add-job" class="md-rised">
         <md-icon>add</md-icon>

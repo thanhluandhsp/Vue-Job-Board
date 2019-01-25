@@ -4,7 +4,7 @@
   
       <md-card-header>
         <md-card-header-text>
-          sdfsdf
+          
           <div class="md-title">{{ job.jobtitle }}</div>
           <div class="md-subhead">in {{ job.company }}</div>
         </md-card-header-text>
