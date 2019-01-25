@@ -31,34 +31,30 @@
 
             <div class="md-body-2">
               <h3>Job Description</h3>
-                <vue-markdown>  &nbsp;
-              {{ job.description }}</vue-markdown>
+                <vue-markdown>{{ job.description }}</vue-markdown>
             </div>
 
             
             <div class="md-body-2" v-if="job.why">
               <h3>Why join us</h3>
-                <vue-markdown>  &nbsp;
-              {{ job.why }}</vue-markdown>
+                <vue-markdown>{{ job.why }}</vue-markdown>
             </div>
 
             
             <div class="md-body-2" v-if="job.benefits">
-              <h3>Benefits</h3>  <vue-markdown>  &nbsp;
-              {{ job.benefits }}</vue-markdown>
+              <h3>Benefits</h3>  <vue-markdown>{{ job.benefits }}</vue-markdown>
             </div>
 
               
             <div class="md-body-2" v-if="job.responsibilities">
               <h3>Responsibilities</h3>
-               <vue-markdown>  &nbsp;
-              {{ job.responsibilities }}</vue-markdown>
+               <vue-markdown>{{ job.responsibilities }}</vue-markdown>
             </div>
 
               
             <div class="md-body-2" v-if="job.skills">
               <h3>Your Skills and Experience</h3>
-                <vue-markdown> &nbsp; {{ job.skills }}
+                <vue-markdown>{{ job.skills }}
                 </vue-markdown>
 
             </div>

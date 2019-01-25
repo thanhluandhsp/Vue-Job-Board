@@ -51,7 +51,9 @@ export default {
             });
           });
 
-          that.jobs = items;
+
+
+          that.jobs = items.reverse();
 
         
       });

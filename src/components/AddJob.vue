@@ -36,14 +36,14 @@
       
       <md-input-container >
         <label for="website">Website</label>
-        <md-input v-model="form.company" data-vv-name="website" type="text" v-validate name="website" ></md-input>
+        <md-input v-model="form.website" data-vv-name="website" type="text" v-validate name="website" ></md-input>
         <span class="md-error">{{errors.first('website')}}</span>
       </md-input-container>
 
       
       <md-input-container :class="{'md-input-invalid': errors.has('email')}">
         <label for="email">Email *</label>
-        <md-input v-model="form.company" data-vv-name="email" type="text" v-validate name="email"></md-input>
+        <md-input v-model="form.email" data-vv-name="email" type="text" v-validate name="email"></md-input>
         <span class="md-error">{{errors.first('email')}}</span>
       </md-input-container>
       
@@ -66,7 +66,7 @@
       
       <md-input-container >
         <label for="email">How to apply</label>
-        <md-input v-model="form.company" data-vv-name="how" type="text" name="how" ></md-input>
+        <md-input v-model="form.how" data-vv-name="how" type="text" name="how" ></md-input>
         <span class="md-error">{{errors.first('how')}}</span>
       </md-input-container>
   
@@ -159,6 +159,7 @@ export default {
   },
   methods: {
     addJobPost(formData) {
+      var that = this; 
       this.$validator.validateAll().then(results => {
         if (results) {
 
@@ -169,9 +170,9 @@ export default {
           //debugger;
           this.form.user_id = store.state.thisUser.uid;
           updates['/jobs/' + newJobKey]= this.form;
-          alert('Form Submitted!');
-          
+  
           db.ref().update(updates);
+          that.$router.push("/job/" + newJobKey);
         }
       }).catch((error) => {
         // eslint-disable-next-line
