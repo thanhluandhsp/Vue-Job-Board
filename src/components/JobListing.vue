@@ -6,7 +6,7 @@
     <div>
       <md-subheader>Công việc mới nhất</md-subheader>
       <md-layout>
-        <md-layout class="flex-fill" v-for="job in jobs" :_key="job.key">
+        <md-layout style="flex:auto" v-for="job in jobs" :_key="job.key">
           <app-jobcard :job="job"></app-jobcard>
         </md-layout>
       </md-layout>
@@ -16,7 +16,7 @@
 
 <script>
 import JobCard from './includes/JobCard.vue'
-
+import TimeAgo from 'vue2-timeago'
 
 import { firebaseApp } from '@/firebase'
 import store from '../store'
@@ -25,7 +25,10 @@ const db = firebaseApp.database();
 export default {
   name: 'JosbListings',
   components: {
-      'app-jobcard':JobCard
+      'app-jobcard':JobCard,
+      TimeAgo,
+
+
   },
   data: function () {
     return {
