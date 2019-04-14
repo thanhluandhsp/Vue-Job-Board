@@ -10,7 +10,7 @@ Please fork to send pull requests if you want to contribute to development.
 
 ``` bash
 # clone the repository
-git clone https://github.com/tamal3053/Vue-Job-Board && cd Vue-Job-Board
+git clone https://github.com/lambdademy/Vue-Job-Board && cd Vue-Job-Board
 
 # install dependencies
 npm install
