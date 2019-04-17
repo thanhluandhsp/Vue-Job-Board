@@ -63,7 +63,13 @@
         <span class="md-error">{{errors.first('skype')}}</span>
       </md-input-container>
 
-      
+      <md-input-container >
+        <label for="phone">Linkedin</label>
+        <md-input v-model="form.linkedin" data-vv-name="linkedin" type="text" v-validate name="linkedin" ></md-input>
+        <span class="md-error">{{errors.first('linkedin')}}</span>
+      </md-input-container>
+
+
       <md-input-container >
         <label for="email">How to apply</label>
         <md-input v-model="form.how" data-vv-name="how" type="text" name="how" ></md-input>
